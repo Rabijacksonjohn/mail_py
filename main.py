@@ -1,23 +1,7 @@
-from dotenv import load_dotenv
-import os
-import imaplib
-import email
-
-load_dotenv()
+from utils.mail_connect import connect_mail
 
 
-username=os.getenv("EMAIL")
-password=os.getenv("PASSWORD")
-
-# Connect mail with username and password
-
-def connect_mail():
-    mail=imaplib.IMAP4_SSL("imap.gmail.com")
-    mail.login(username,password)
-    mail.select("inbox")
-    print("mail is connected")
-    return mail
-
+# searching mail related to keyword
 
 def search_mail():
     mail=connect_mail()
@@ -32,5 +16,5 @@ def search_mail():
         print("no email is found in given keyword")
 
 
-search_mail()
+search_mail() 
 
