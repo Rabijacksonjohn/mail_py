@@ -15,7 +15,7 @@ pip install python-dotenv
 Create a .env file in the same folder as your script:
 
 Code snippet
-EMAIL="your_email@gmail.com"
+EMAIL="your_email@ gmail.com"
 PASSWORD="your_gmail_app_password"
 Run the program:
 
