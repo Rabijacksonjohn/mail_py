@@ -1,24 +1,35 @@
 import sqlite3
+from tabulate import tabulate
 
 
-# Create a database
-connection=sqlite3.connect('keyword_company.db')
+conn=sqlite3.connect("database/keywords.db")
+cursor=conn.cursor()
 
-cursor=connection.cursor()
+def cr_table():
+    cmd='''CREATE TABLE IF NOT EXISTS keywords(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            keyword TEXT UNIQUE NOT NULL,
+            date DATETIME DEFAULT CURRENT_TIMESTAMP ) '''
+    cursor.execute(cmd)
+    conn.commit()
+    print("database is created")
 
-command1 = '''CREATE TABLE IF NOT EXISTS keyword (
-    email_id TEXT PRIMARY KEY, 
-    keyword_matched TEXT,
-    date_found DATETIME DEFAULT CURRENT_TIMESTAMP
-)'''
+def del_table():
+    cmd='''DROP TABLE IF EXISTS keyword_tab'''
+    cursor.execute(cmd)
+    conn.commit()
+    print("database is deleted")
 
-cursor.execute(command1)
-connection.commit()
+def show_table():
+    cursor.execute("SELECT name FROM sqlite_master WHERE type='table'")
+    tables = cursor.fetchall()
+    print(tabulate(tables, headers=["Table Name"], tablefmt="grid"))
 
-cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
 
-tables=cursor.fetchall()
-
-print("Tables in the database")
-for i in tables:
-    print(i)
+# try :
+#     cr_table()
+#     show_table()
+#     del_table()
+#     show_table()
+# except Exception as e:
+#     print(e)
