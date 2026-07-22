@@ -1,2 +1,112 @@
-imaplib
-tabulat
+==========================================================
+                    MailPy Installation Guide
+==========================================================
+
+Prerequisites
+-------------
+Before running MailPy, make sure you have:
+
+- Python 3.10 or later
+- Git (Optional)
+- A Gmail account with IMAP enabled
+- A Google App Password
+
+----------------------------------------------------------
+1. Clone the Repository
+----------------------------------------------------------
+
+git clone <repository-url>
+cd mail_py
+
+----------------------------------------------------------
+2. Create a Virtual Environment
+----------------------------------------------------------
+
+macOS / Linux
+
+python3 -m venv .venv
+source .venv/bin/activate
+
+Windows (PowerShell)
+
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+
+----------------------------------------------------------
+3. Install Required Packages
+----------------------------------------------------------
+
+pip install -r requirements.txt
+
+If requirements.txt is not available, install manually:
+
+pip install tabulate python-dotenv
+
+----------------------------------------------------------
+4. Configure Environment Variables
+----------------------------------------------------------
+
+Create a file named ".env" in the project root.
+
+Example:
+
+EMAIL=your_email@gmail.com
+PASSWORD=your_google_app_password
+
+Note:
+Use a Google App Password instead of your Gmail password.
+
+----------------------------------------------------------
+5. Run the Application
+----------------------------------------------------------
+
+macOS / Linux
+
+python3 main.py
+
+Windows
+
+python main.py
+
+----------------------------------------------------------
+Python Standard Library Modules Used
+----------------------------------------------------------
+
+The following modules are included with Python and do not
+need to be installed:
+
+- sqlite3
+- imaplib
+- email
+- os
+- datetime
+
+----------------------------------------------------------
+External Dependencies
+----------------------------------------------------------
+
+- tabulate
+- python-dotenv
+
+----------------------------------------------------------
+Features
+----------------------------------------------------------
+
+- Connect to Gmail using IMAP
+- Store search keywords in SQLite
+- Add new keywords
+- Remove keywords
+- View stored keywords
+- Search emails using saved keywords
+- Display sender and subject of matching emails
+
+----------------------------------------------------------
+Notes
+----------------------------------------------------------
+
+- Enable IMAP in your Gmail account.
+- Use a Google App Password for authentication.
+- The SQLite database (keywords.db) will be created
+  automatically if it does not already exist.
+
+==========================================================
