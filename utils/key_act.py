@@ -12,6 +12,14 @@ def add_key(keywd):
                    ''',(keywd,))
     conn.commit()
 
+def del_key(keywd):
+    cursor.execute('''DELETE FROM keywords WHERE id=(?)''',(keywd,))
+    conn.commit()
+
+def get_key():
+    cursor.execute('''SELECT keyword FROM keywords''')
+    rows=cursor.fetchall()
+    return [row[0] for row in rows]
 
 
 def show_key():
